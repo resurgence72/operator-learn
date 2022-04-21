@@ -25,6 +25,7 @@ type IArticleUsecase interface {
 type ArticleRepoTxFunc = func(ctx context.Context, repo IArticleRepo) error
 type DBOption func(*gorm.DB) *gorm.DB
 
+//go:generate mockgen -destination=../mock/article.go . IArticleRepo
 // IArticleRepo IArticleRepo
 type IArticleRepo interface {
 	Tx(ctx context.Context, f ArticleRepoTxFunc) error
